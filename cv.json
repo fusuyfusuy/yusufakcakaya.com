@@ -1,0 +1,854 @@
+{
+  "schema": "https://yusufakcakaya.com/cv.json#v1",
+  "domain": "yusufakcakaya.com",
+  "origin": "https://yusufakcakaya.com",
+  "generatedBy": "Astro Static Monograph Compiler",
+  "locales": {
+    "tr": {
+      "locale": "tr",
+      "langTag": "tr-TR",
+      "meta": {
+        "title": "M. Yusuf Akçakaya — Boğaziçi Üniversitesi MIS",
+        "description": "M. Yusuf Akçakaya — Boğaziçi Üniversitesi Yönetim Bilişim Sistemleri (MIS) Araştırma Görevlisi ve Doktora Öğrencisi. Siber güvenlik, yapay zeka orkestrasyonu, risk yönetimi ve yazılım geliştirme.",
+        "canonicalPath": "/",
+        "alternatePath": "/en/",
+        "alternateLabel": "EN",
+        "machineJsonLabel": "cv.json"
+      },
+      "latestWork": {
+        "label": "Son Çalışmalar",
+        "entries": [
+          {
+            "date": "2026-11-01",
+            "text": "Bu sayfayı yayına aldım (yusufakcakaya.com)."
+          }
+        ]
+      },
+      "hud": {
+        "academicStatus": "01 / Akademik",
+        "hackerStatus": "02 / Hacker",
+        "personalStatus": "03 / Kişisel",
+        "navAcademic": "01 Akademik",
+        "navHacker": "02 Hacker",
+        "navPersonal": "03 Kişisel"
+      },
+      "identity": {
+        "name": "M. Yusuf Akçakaya",
+        "fullName": "M. Yusuf Akçakaya",
+        "handle": "@fusuyfusuy",
+        "institution": "Boğaziçi Üniversitesi",
+        "role": "Araştırma Görevlisi",
+        "degreeTrack": "Yönetim Bilişim Sistemleri, Doktora",
+        "location": "İstanbul",
+        "summary": "Siber güvenlik kırmızı/mavi takım pratikleri, ağ altyapısı, regülasyonlar, risk yönetimi ve yapay zeka orkestrasyonu alanlarında deneyim. Siber güvenlik üzerine eğitimler verdim ve blog yazıları yazdım; web sayfaları geliştirdim, e-posta, web ve VPN sunucuları yönettim. Ağırlıklı olarak Python ve JS/TS ile, artık her şeyi yapay zeka ile kodluyorum. Ayrıca C, Java, PHP, SQL ve kabuk betikleri (shell scripting) konusunda deneyimim var.",
+        "contacts": [
+          {
+            "id": "email",
+            "label": "e-Mail",
+            "handle": "yusufakcakaya@gmail.com",
+            "href": "mailto:yusufakcakaya@gmail.com",
+            "external": false
+          },
+          {
+            "id": "github",
+            "label": "GitHub",
+            "handle": "github.com/fusuyfusuy",
+            "href": "https://github.com/fusuyfusuy/",
+            "external": true
+          },
+          {
+            "id": "linkedin",
+            "label": "LinkedIn",
+            "handle": "linkedin.com/in/yusufakcakaya",
+            "href": "https://linkedin.com/in/yusufakcakaya/",
+            "external": true
+          },
+          {
+            "id": "blog",
+            "label": "Blog",
+            "handle": "daginikmasa.com",
+            "href": "https://daginikmasa.com/",
+            "external": true
+          }
+        ]
+      },
+      "academic": {
+        "index": "01",
+        "id": "academic",
+        "title": "Akademik",
+        "subtitle": "Boğaziçi Üniversitesi Yönetim Bilişim Sistemleri (MIS) eğitim, araştırma ve öğretim çalışmaları.",
+        "educationHeading": "Eğitim",
+        "education": [
+          {
+            "degree": "Yönetim Bilişim Sistemleri, Doktora (PhD)",
+            "institution": "Boğaziçi Üniversitesi",
+            "period": "Şubat 2025 – Günümüz",
+            "summary": "Siber güvenlik, yapay zeka, risk yönetimi, yönetişim ve bilgi mimarisi odaklı doktora çalışmaları.",
+            "highlights": []
+          },
+          {
+            "degree": "Yönetim Bilişim Sistemleri, Yüksek Lisans (MA)",
+            "institution": "Boğaziçi Üniversitesi",
+            "period": "Eylül 2021 – Eylül 2024",
+            "gpa": "3.44 / 4.00",
+            "thesis": "AGENT BASED MODELING OF THIRD-PARTY ENTERPRISE CYBERSECURITY",
+            "summary": "Kurumsal üçüncü taraf siber güvenliğinin etmen tabanlı modellenmesi üzerine yüksek lisans tezi.",
+            "highlights": [
+              "GPA: 3.44 / 4.00",
+              "Yüksek Lisans Tezi: \"AGENT BASED MODELING OF THIRD-PARTY ENTERPRISE CYBERSECURITY\""
+            ]
+          },
+          {
+            "degree": "Yönetim Bilişim Sistemleri, Lisans (BSc)",
+            "institution": "Boğaziçi Üniversitesi",
+            "period": "Eylül 2015 – Ağustos 2021",
+            "summary": "Yönetim, işletme, finans, ekonomi, programlama, ağ sistemleri, yönetişim, ERP, tedarik zinciri, proje yönetimi ve sistem tasarımı dersleri aldım. Karar destek sistemleri, web geliştirme, mobil geliştirme ve siber güvenlik alanlarında projeler yürüttüm.",
+            "highlights": [
+              "Bitirme Projesi: Sysmon ve Wazuh kullanarak MITRE ATT&CK eşlemeli açık kaynak bir HIDS (Konak Tabanlı Saldırı Tespit Sistemi) geliştirdik."
+            ]
+          }
+        ],
+        "researchHeading": "Akademik Görev & Araştırma",
+        "appointment": {
+          "role": "Araştırma Görevlisi",
+          "institution": "Boğaziçi Üniversitesi",
+          "department": "Yönetim Bilişim Sistemleri Bölümü (MIS)",
+          "period": "Mayıs 2023 – Günümüz",
+          "summary": "Siber güvenlik ve yapay zeka, risk yönetimi, yönetişim ve bilgi mimarisi üzerine araştırma çalışmaları.",
+          "researchStreams": [
+            "Siber Güvenlik & Yapay Zeka",
+            "Risk Yönetimi & Yönetişim",
+            "Bilgi Mimarisi",
+            "Etmen Tabanlı Modelleme (NetLogo)"
+          ],
+          "coursesAssisted": [
+            {
+              "code": "MIS 131",
+              "title": "Introduction to Programming",
+              "role": "Laboratuvar & Problem Session"
+            },
+            {
+              "code": "MIS 132",
+              "title": "Object-Oriented Programming",
+              "role": "Laboratuvar & Değerlendirme"
+            },
+            {
+              "code": "MIS 233",
+              "title": "Web Based System Development",
+              "role": "Web Sistemleri & Laboratuvar"
+            },
+            {
+              "code": "MIS 251",
+              "title": "Database & Operations",
+              "role": "Ders & Sınav Operasyonları"
+            }
+          ]
+        },
+        "interestsHeading": "İlgi & Araştırma Alanları",
+        "interests": [
+          "Siber Güvenlik",
+          "Yapay Zeka",
+          "Risk Yönetimi",
+          "Yönetişim (Governance)",
+          "Bilgi Mimarisi (Information Architecture)"
+        ]
+      },
+      "hacker": {
+        "index": "02",
+        "id": "hacker",
+        "title": "Hacker",
+        "subtitle": "İş deneyimi, siber güvenlik pratikleri, açık kaynak araçlar ve yazılım projeleri.",
+        "experienceHeading": "Deneyim",
+        "experience": [
+          {
+            "slug": "aposto",
+            "company": "Aposto",
+            "role": "Back End Engineer",
+            "period": "Nisan 2022 – Mayıs 2023",
+            "summary": "TypeScript, Node.js, NestJS ve MongoDB kullanarak ödeme ve abonelik API'lerinin geliştirilmesi.",
+            "tags": [
+              "TypeScript",
+              "Node.js",
+              "NestJS",
+              "MongoDB"
+            ]
+          },
+          {
+            "slug": "bitexen",
+            "company": "Bitexen",
+            "role": "Cloud Security Engineer",
+            "period": "Şubat 2022 – Nisan 2022",
+            "summary": "MDM, EDR ve çeşitli güvenlik çözümlerinin yönetimi. Bug bounty ve zafiyet bildirim programlarının tasarımı ve uygulanması. Bulut ortamı güvenliğinin test edilmesi ve değerlendirilmesi. Uygulama ve DevOps güvenliği.",
+            "tags": [
+              "MDM",
+              "EDR",
+              "Bug Bounty",
+              "Cloud Security",
+              "DevOps Security"
+            ]
+          },
+          {
+            "slug": "turkcell",
+            "company": "Turkcell",
+            "role": "Offensive Security Associate",
+            "period": "Eylül 2021 – Aralık 2021",
+            "summary": "İnternet ve intranet testleri için farklı müşterilerle uçtan uca sızma testi süreç yönetimi (İzinler, test kapsamı, angajman kuralları, bilgi toplama, tarama/numaralandırma, istismar, yetki yükseltme, post-exploitation, raporlama).",
+            "tags": [
+              "Penetration Testing",
+              "Exploitation",
+              "Privilege Escalation",
+              "Reporting"
+            ]
+          },
+          {
+            "slug": "pwc",
+            "company": "PwC Turkey",
+            "role": "Cyber Security Consultant",
+            "period": "Şubat 2021 – Ağustos 2021",
+            "mode": "Staj",
+            "summary": "Sızma testleri, red team çalışmaları, ağ altyapısı, uygulama geliştirme, DDoS platformu geliştirme. Kullanılan teknolojiler: Python, SQL, HTML/CSS/JS, Bash.",
+            "tags": [
+              "Python",
+              "SQL",
+              "HTML/CSS/JS",
+              "Bash",
+              "Red Team"
+            ]
+          },
+          {
+            "slug": "bucysec",
+            "company": "Boğaziçi Üniversitesi Siber Güvenlik Merkezi",
+            "role": "Penetration Tester",
+            "period": "Eylül 2018 – Ağustos 2021",
+            "mode": "Yarı Zamanlı",
+            "summary": "20+ sızma testi, güvenlik duvarı yapılandırmaları, oltalama (phishing) testleri, eğitimler ve danışmanlıklar.",
+            "tags": [
+              "20+ Pentest",
+              "Firewall",
+              "Phishing",
+              "Eğitim"
+            ]
+          },
+          {
+            "slug": "boun-cc",
+            "company": "Boğaziçi Üniversitesi Bilgi İşlem Merkezi",
+            "role": "Assistant Web Developer",
+            "period": "Temmuz 2019 – Şubat 2020",
+            "mode": "Yarı Zamanlı",
+            "summary": "Okulun resmi harita sayfasını (map.boun.edu.tr) hazırladım. Üniversite kurumları için ağırlıklı olarak Drupal ile web sayfaları geliştirdim. Kullanılan teknolojiler: PHP, HTML/CSS/JS, SQL.",
+            "tags": [
+              "PHP",
+              "Drupal",
+              "HTML/CSS/JS",
+              "SQL"
+            ]
+          }
+        ],
+        "campsHeading": "Kurslar & Kamplar",
+        "camps": [
+          {
+            "slug": "turkcell-camp",
+            "title": "Turkcell CyberCamp 2021",
+            "organization": "Turkcell",
+            "period": "2021",
+            "distinction": "CTF 2.'lik Derecesi (CTF 2nd Place)"
+          },
+          {
+            "slug": "boun-camp",
+            "title": "Boğaziçi Üniversitesi Siber Güvenlik Merkezi CyberCamp",
+            "organization": "Boğaziçi Üniversitesi",
+            "period": "2017 – 2021",
+            "distinction": "2017 ve 2018'de Katılımcı · 2019, 2020 ve 2021'de Eğitmen"
+          }
+        ],
+        "projectsHeading": "Projeler",
+        "projects": [
+          {
+            "id": "mimori",
+            "name": "Mimori",
+            "category": "Ajan Bellek Aracı",
+            "period": "Açık Kaynak",
+            "summary": "AST haritalama, PageRank ve karar günlüğü (decision logging) kullanan yapay zeka ajanı depo bellek aracı.",
+            "repoHref": "https://github.com/fusuyfusuy/mimori",
+            "stack": [
+              "Rust",
+              "AST",
+              "PageRank",
+              "MCP"
+            ]
+          },
+          {
+            "id": "akatsuki",
+            "name": "Akatsuki",
+            "category": "Ajan Bilgi Üssü",
+            "period": "Açık Kaynak",
+            "summary": "Özel MCP sunucusu, BM25 arama ve kelime gömmeleri (word embeddings) içeren yapay zeka ajanı bilgi tabanı.",
+            "repoHref": "https://github.com/fusuyfusuy/akatsuki",
+            "stack": [
+              "Rust",
+              "MCP",
+              "BM25",
+              "Embeddings"
+            ]
+          },
+          {
+            "id": "boun-map",
+            "name": "Boğaziçi Üniversitesi Harita Uygulaması",
+            "category": "Web Uygulaması",
+            "period": "map.boun.edu.tr",
+            "summary": "Üniversitenin resmi harita sayfası.",
+            "href": "https://map.boun.edu.tr/",
+            "stack": [
+              "PHP",
+              "JavaScript",
+              "HTML/CSS",
+              "SQL"
+            ]
+          },
+          {
+            "id": "mitre-hids",
+            "name": "MITRE ATT&CK Eşlemeli Açık Kaynak HIDS",
+            "category": "Bitirme Projesi",
+            "period": "2021",
+            "summary": "Olayları tespit etmek ve alarm üretmek için Sysmon ve Wazuh tabanlı açık kaynak çözüm.",
+            "stack": [
+              "Sysmon",
+              "Wazuh",
+              "MITRE ATT&CK"
+            ]
+          },
+          {
+            "id": "bountools",
+            "name": "bountools.com",
+            "category": "Web Platformu",
+            "period": "Canlı",
+            "summary": "Boğaziçi Üniversitesi ders planlama, arşiv ve arama platformu.",
+            "href": "https://bountools.com/",
+            "stack": [
+              "Python",
+              "FastAPI",
+              "Meilisearch",
+              "PostgreSQL"
+            ]
+          },
+          {
+            "id": "github-portfolio",
+            "name": "GitHub Portfolyosu",
+            "category": "Açık Kaynak",
+            "period": "github.com/fusuyfusuy",
+            "summary": "Keyif için üretiyorum. Projelerimin çoğu açık kaynaklıdır ve GitHub profilimde yer almaktadır.",
+            "href": "https://github.com/fusuyfusuy/",
+            "stack": [
+              "Python",
+              "TypeScript",
+              "JavaScript",
+              "Rust",
+              "Shell"
+            ]
+          }
+        ],
+        "skillsHeading": "Teknik Yetkinlikler",
+        "skills": [
+          {
+            "category": "Kodlama & Betik",
+            "items": [
+              "Python",
+              "JavaScript",
+              "TypeScript",
+              "SQL",
+              "Bash"
+            ]
+          },
+          {
+            "category": "Simülasyon & Yapay Zeka",
+            "items": [
+              "NetLogo",
+              "LLM Agent Orchestration",
+              "Harness Management"
+            ]
+          },
+          {
+            "category": "Aşinalık",
+            "items": [
+              "Java",
+              "C",
+              "PHP",
+              "UML"
+            ]
+          }
+        ]
+      },
+      "personal": {
+        "index": "03",
+        "id": "personal",
+        "title": "Kişisel",
+        "subtitle": "Bağımsız web projeleri, blog yazıları ve diller.",
+        "venuesHeading": "Bağımsız Projeler & Yazılar",
+        "venues": [
+          {
+            "id": "daginikmasa",
+            "name": "daginikmasa.com",
+            "tagline": "Kişisel Blog",
+            "badge": "Blog",
+            "href": "https://daginikmasa.com/",
+            "description": "Siber güvenlik, teknoloji ve çeşitli konular üzerine yazdığım kişisel blog."
+          },
+          {
+            "id": "fusuycorp",
+            "name": "fusuycorp.com",
+            "tagline": "Deneysel Web & Simülasyon Atölyesi",
+            "badge": "Atölye",
+            "href": "https://fusuycorp.com/",
+            "description": "Tarayıcı içi Canvas2D/WebAudio simülasyonları, etkileşimli terminal deneyleri ve yapay zeka ajanlarıyla üretilen teknik yazılar."
+          },
+          {
+            "id": "hepyeni",
+            "name": "hepyeni.net",
+            "tagline": "Kültür & Medya Katalog Platformu",
+            "badge": "Platform",
+            "href": "https://hepyeni.net/",
+            "description": "Kitap, film ve müzik kulüpleri için ortaklaşa öneri ve oylama uygulaması."
+          }
+        ],
+        "languagesHeading": "Diller",
+        "languages": [
+          {
+            "language": "Türkçe",
+            "proficiency": "Ana Dil (Native)"
+          },
+          {
+            "language": "İngilizce",
+            "proficiency": "İleri Düzey (Advanced)",
+            "certification": "TOEFL iBT Skoru: 106"
+          }
+        ]
+      },
+      "colophon": {
+        "note": "M. Yusuf Akçakaya · Boğaziçi Üniversitesi MIS"
+      }
+    },
+    "en": {
+      "locale": "en",
+      "langTag": "en-US",
+      "meta": {
+        "title": "M. Yusuf Akçakaya — Boğaziçi University MIS",
+        "description": "M. Yusuf Akçakaya — Research Assistant and PhD Student in Management Information Systems (MIS) at Boğaziçi University. Cyber security, AI orchestration, risk management, and software engineering.",
+        "canonicalPath": "/en/",
+        "alternatePath": "/",
+        "alternateLabel": "TR",
+        "machineJsonLabel": "cv.json"
+      },
+      "latestWork": {
+        "label": "Latest Work",
+        "entries": [
+          {
+            "date": "2026-11-01",
+            "text": "Made this page live (yusufakcakaya.com)."
+          }
+        ]
+      },
+      "hud": {
+        "academicStatus": "01 / Academic",
+        "hackerStatus": "02 / Hacker",
+        "personalStatus": "03 / Personal",
+        "navAcademic": "01 Academic",
+        "navHacker": "02 Hacker",
+        "navPersonal": "03 Personal"
+      },
+      "identity": {
+        "name": "M. Yusuf Akçakaya",
+        "fullName": "M. Yusuf Akçakaya",
+        "handle": "@fusuyfusuy",
+        "institution": "Boğaziçi University",
+        "role": "Research Assistant",
+        "degreeTrack": "Management Information Systems, PhD",
+        "location": "Istanbul",
+        "summary": "Experience in cyber security red/blue practice, network infrastructure, regulations, risk management, and AI orchestration. I gave trainings and wrote blog posts about cyber security, developed web pages, and managed e-mail, web, and VPN servers. I code mostly with Python and JS/TS, now everything with AI. I also have experience with C, Java, PHP, SQL, and shell scripting.",
+        "contacts": [
+          {
+            "id": "email",
+            "label": "e-Mail",
+            "handle": "yusufakcakaya@gmail.com",
+            "href": "mailto:yusufakcakaya@gmail.com",
+            "external": false
+          },
+          {
+            "id": "github",
+            "label": "GitHub",
+            "handle": "github.com/fusuyfusuy",
+            "href": "https://github.com/fusuyfusuy/",
+            "external": true
+          },
+          {
+            "id": "linkedin",
+            "label": "LinkedIn",
+            "handle": "linkedin.com/in/yusufakcakaya",
+            "href": "https://linkedin.com/in/yusufakcakaya/",
+            "external": true
+          },
+          {
+            "id": "blog",
+            "label": "Blog",
+            "handle": "daginikmasa.com",
+            "href": "https://daginikmasa.com/",
+            "external": true
+          }
+        ]
+      },
+      "academic": {
+        "index": "01",
+        "id": "academic",
+        "title": "Academic",
+        "subtitle": "Education, research, and teaching at Boğaziçi University Department of Management Information Systems.",
+        "educationHeading": "Education",
+        "education": [
+          {
+            "degree": "Management Information Systems, PhD",
+            "institution": "Boğaziçi University",
+            "period": "February 2025 – Present",
+            "summary": "Doctoral study and research in Management Information Systems.",
+            "highlights": []
+          },
+          {
+            "degree": "Management Information Systems, MA",
+            "institution": "Boğaziçi University",
+            "period": "September 2021 – September 2024",
+            "gpa": "3.44 / 4.00",
+            "thesis": "AGENT BASED MODELING OF THIRD-PARTY ENTERPRISE CYBERSECURITY",
+            "summary": "Graduate degree and thesis research on agent-based modeling of enterprise cybersecurity.",
+            "highlights": [
+              "GPA: 3.44 / 4.00",
+              "Master's Thesis: \"AGENT BASED MODELING OF THIRD-PARTY ENTERPRISE CYBERSECURITY\""
+            ]
+          },
+          {
+            "degree": "Management Information Systems, BSc",
+            "institution": "Boğaziçi University",
+            "period": "September 2015 – August 2021",
+            "summary": "Had classes on management, business, finance, economics, programming, networking, governance, ERP, supply chains, project management, and system design. Did a number of projects in decision support systems, web development, mobile development, and cyber security.",
+            "highlights": [
+              "Graduation Project: Created a HIDS system with MITRE ATT&CK mapping using Sysmon and Wazuh."
+            ]
+          }
+        ],
+        "researchHeading": "Research & Teaching",
+        "appointment": {
+          "role": "Research Assistant",
+          "institution": "Boğaziçi University",
+          "department": "MIS Department",
+          "period": "May 2023 – Present",
+          "summary": "Research focus on cybersecurity and AI, risk management, governance, and information architecture.",
+          "researchStreams": [
+            "Cybersecurity & AI",
+            "Risk Management & Governance",
+            "Information Architecture",
+            "Agent-Based Modeling (NetLogo)"
+          ],
+          "coursesAssisted": [
+            {
+              "code": "MIS 131",
+              "title": "Introduction to Programming",
+              "role": "Lab & Problem Sessions"
+            },
+            {
+              "code": "MIS 132",
+              "title": "Object-Oriented Programming",
+              "role": "Lab & Grading"
+            },
+            {
+              "code": "MIS 233",
+              "title": "Web Based System Development",
+              "role": "Web Systems & Lab"
+            },
+            {
+              "code": "MIS 251",
+              "title": "Database & Operations",
+              "role": "Course & Exam Operations"
+            }
+          ]
+        },
+        "interestsHeading": "Areas of Interest",
+        "interests": [
+          "Cybersecurity",
+          "Artificial Intelligence",
+          "Risk Management",
+          "Governance",
+          "Information Architecture"
+        ]
+      },
+      "hacker": {
+        "index": "02",
+        "id": "hacker",
+        "title": "Hacker",
+        "subtitle": "Work experience, security assessments, and software projects.",
+        "experienceHeading": "Experience",
+        "experience": [
+          {
+            "slug": "aposto",
+            "company": "Aposto",
+            "role": "Back End Engineer",
+            "period": "April 2022 – May 2023",
+            "summary": "Developed payment and subscription APIs using TypeScript, Node.js, NestJS, MongoDB.",
+            "tags": [
+              "TypeScript",
+              "Node.js",
+              "NestJS",
+              "MongoDB"
+            ]
+          },
+          {
+            "slug": "bitexen",
+            "company": "Bitexen",
+            "role": "Cloud Security Engineer",
+            "period": "February 2022 – April 2022",
+            "summary": "Management of MDM, EDR and various security solutions. Bug bounty and vulnerability disclosure programs design and implementation. Testing and evaluating cloud environment security. Application and DevOps security.",
+            "tags": [
+              "MDM",
+              "EDR",
+              "Bug Bounty",
+              "Cloud Security",
+              "DevOps Security"
+            ]
+          },
+          {
+            "slug": "turkcell",
+            "company": "Turkcell",
+            "role": "Offensive Security Associate",
+            "period": "September 2021 – December 2021",
+            "summary": "End-to-end penetration test process management (Permissions, test scope, rules of engagement, information gathering, enumeration/scanning, exploitation, privilege escalation, post-exploitation, reporting) with various customers for the internet and intranet testing.",
+            "tags": [
+              "Penetration Testing",
+              "Exploitation",
+              "Privilege Escalation",
+              "Reporting"
+            ]
+          },
+          {
+            "slug": "pwc",
+            "company": "PwC Turkey",
+            "role": "Cyber Security Consultant",
+            "period": "February 2021 – August 2021",
+            "mode": "Internship",
+            "summary": "Penetration tests, red team activities, network infrastructure, application development, DDOS platform development. Used techs: Python, SQL, HTML/CSS/JS, Bash.",
+            "tags": [
+              "Python",
+              "SQL",
+              "HTML/CSS/JS",
+              "Bash",
+              "Red Team"
+            ]
+          },
+          {
+            "slug": "bucysec",
+            "company": "Boğaziçi University Cyber Security Center",
+            "role": "Penetration Tester",
+            "period": "September 2018 – August 2021",
+            "mode": "Part time",
+            "summary": "20+ penetration tests, firewall configurations, phishing tests, trainings, consultancies.",
+            "tags": [
+              "20+ Pentests",
+              "Firewall",
+              "Phishing",
+              "Training"
+            ]
+          },
+          {
+            "slug": "boun-cc",
+            "company": "Boğaziçi University Computer Center",
+            "role": "Assistant Web Developer",
+            "period": "July 2019 – February 2020",
+            "mode": "Part time",
+            "summary": "Made school's official map page. Built web pages mainly with Drupal for the institutions of the university. Used techs: PHP, HTML/CSS/JS, SQL.",
+            "tags": [
+              "PHP",
+              "Drupal",
+              "HTML/CSS/JS",
+              "SQL"
+            ]
+          }
+        ],
+        "campsHeading": "Courses / Camps",
+        "camps": [
+          {
+            "slug": "turkcell-camp",
+            "title": "Turkcell / CyberCamp 2021",
+            "organization": "Turkcell",
+            "period": "2021",
+            "distinction": "CTF 2nd Place"
+          },
+          {
+            "slug": "boun-camp",
+            "title": "Boğaziçi University Cybersecurity Center / CyberCamp",
+            "organization": "Boğaziçi University",
+            "period": "2017 – 2021",
+            "distinction": "Participant in 2017 and 2018 · Trainer in 2019, 2020 and 2021"
+          }
+        ],
+        "projectsHeading": "Projects",
+        "projects": [
+          {
+            "id": "mimori",
+            "name": "Mimori",
+            "category": "Agent Memory Tool",
+            "period": "Open Source",
+            "summary": "AI agent repository memory tool using AST mapping, PageRank, and decision logging.",
+            "repoHref": "https://github.com/fusuyfusuy/mimori",
+            "stack": [
+              "Rust",
+              "AST",
+              "PageRank",
+              "MCP"
+            ]
+          },
+          {
+            "id": "akatsuki",
+            "name": "Akatsuki",
+            "category": "Agent Knowledge Base",
+            "period": "Open Source",
+            "summary": "AI agent knowledge base with custom MCP, BM25 search and word embeddings.",
+            "repoHref": "https://github.com/fusuyfusuy/akatsuki",
+            "stack": [
+              "Rust",
+              "MCP",
+              "BM25",
+              "Embeddings"
+            ]
+          },
+          {
+            "id": "boun-map",
+            "name": "Boğaziçi University Map App",
+            "category": "Web Application",
+            "period": "map.boun.edu.tr",
+            "summary": "Official map page. Accessible at https://map.boun.edu.tr/",
+            "href": "https://map.boun.edu.tr/",
+            "stack": [
+              "PHP",
+              "JavaScript",
+              "HTML/CSS",
+              "SQL"
+            ]
+          },
+          {
+            "id": "mitre-hids",
+            "name": "Creating a MITRE ATT&CK mapped open source HIDS",
+            "category": "Graduation Project",
+            "period": "2021",
+            "summary": "Sysmon and Wazuh based open source solution for detecting events and creating alerts.",
+            "stack": [
+              "Sysmon",
+              "Wazuh",
+              "MITRE ATT&CK"
+            ]
+          },
+          {
+            "id": "bountools",
+            "name": "bountools.com",
+            "category": "Web Platform",
+            "period": "Live",
+            "summary": "Boğaziçi University course scheduling, archive, and search platform.",
+            "href": "https://bountools.com/",
+            "stack": [
+              "Python",
+              "FastAPI",
+              "Meilisearch",
+              "PostgreSQL"
+            ]
+          },
+          {
+            "id": "github-portfolio",
+            "name": "GitHub Portfolio",
+            "category": "Open Source",
+            "period": "github.com/fusuyfusuy",
+            "summary": "I create for fun. Most of my projects are open source and available at my GitHub.",
+            "href": "https://github.com/fusuyfusuy/",
+            "stack": [
+              "Python",
+              "TypeScript",
+              "JavaScript",
+              "Rust",
+              "Shell"
+            ]
+          }
+        ],
+        "skillsHeading": "Skills",
+        "skills": [
+          {
+            "category": "Coding & Scripting",
+            "items": [
+              "Python",
+              "JavaScript",
+              "TypeScript",
+              "SQL",
+              "Bash"
+            ]
+          },
+          {
+            "category": "Simulation & AI",
+            "items": [
+              "NetLogo",
+              "LLM Agent Orchestration",
+              "Harness Management"
+            ]
+          },
+          {
+            "category": "Familiarity",
+            "items": [
+              "Java",
+              "C",
+              "PHP",
+              "UML"
+            ]
+          }
+        ]
+      },
+      "personal": {
+        "index": "03",
+        "id": "personal",
+        "title": "Personal",
+        "subtitle": "Independent projects, writing, and languages.",
+        "venuesHeading": "Projects & Writing",
+        "venues": [
+          {
+            "id": "daginikmasa",
+            "name": "daginikmasa.com",
+            "tagline": "Personal Blog",
+            "badge": "Blog",
+            "href": "https://daginikmasa.com/",
+            "description": "Longform essays and blog posts on cyber security, software, and personal notes."
+          },
+          {
+            "id": "fusuycorp",
+            "name": "fusuycorp.com",
+            "tagline": "Computational Sandbox & Agent Lab",
+            "badge": "Workshop",
+            "href": "https://fusuycorp.com/",
+            "description": "Interactive browser physics simulations, terminal experiments, and AI agent essays."
+          },
+          {
+            "id": "hepyeni",
+            "name": "hepyeni.net",
+            "tagline": "Cultural Media Catalog",
+            "badge": "Platform",
+            "href": "https://hepyeni.net/",
+            "description": "Collaborative book, film, and music recommendation and voting app for clubs."
+          }
+        ],
+        "languagesHeading": "Languages",
+        "languages": [
+          {
+            "language": "Türkçe",
+            "proficiency": "Native"
+          },
+          {
+            "language": "English",
+            "proficiency": "Advanced",
+            "certification": "TOEFL iBT Score 106"
+          }
+        ]
+      },
+      "colophon": {
+        "note": "M. Yusuf Akçakaya · Boğaziçi University MIS"
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+# M. Yusuf Akçakaya (@fusuyfusuy)
+
+> Boğaziçi University · Research Assistant · Management Information Systems, PhD
+
+Experience in cyber security red/blue practice, network infrastructure, regulations, risk management, and AI orchestration. I gave trainings and wrote blog posts about cyber security, developed web pages, and managed e-mail, web, and VPN servers. I code mostly with Python and JS/TS, now everything with AI. I also have experience with C, Java, PHP, SQL, and shell scripting.
+
+## Canonical Routes & Machine Endpoints
+- Turkish Monograph (Root): https://yusufakcakaya.com/
+- English Monograph: https://yusufakcakaya.com/en/
+- Structured JSON CV: https://yusufakcakaya.com/cv.json
+- XML Sitemap: https://yusufakcakaya.com/sitemap.xml
+
+## [01] Academic (Education, Research & Teaching)
+- **Management Information Systems, PhD** — Boğaziçi University (February 2025 – Present)
+- **Management Information Systems, MA** — Boğaziçi University (September 2021 – September 2024) · GPA 3.44 / 4.00 · Thesis: "AGENT BASED MODELING OF THIRD-PARTY ENTERPRISE CYBERSECURITY"
+- **Management Information Systems, BSc** — Boğaziçi University (September 2015 – August 2021)
+- **Research Assistant** — Boğaziçi University, MIS Department (May 2023 – Present)
+
+## [02] Hacker (Experience, Security & Open-Source Systems)
+- **Aposto — Back End Engineer** (April 2022 – May 2023): Developed payment and subscription APIs using TypeScript, Node.js, NestJS, MongoDB.
+- **Bitexen — Cloud Security Engineer** (February 2022 – April 2022): Management of MDM, EDR and various security solutions. Bug bounty and vulnerability disclosure programs design and implementation. Testing and evaluating cloud environment security. Application and DevOps security.
+- **Turkcell — Offensive Security Associate** (September 2021 – December 2021): End-to-end penetration test process management (Permissions, test scope, rules of engagement, information gathering, enumeration/scanning, exploitation, privilege escalation, post-exploitation, reporting) with various customers for the internet and intranet testing.
+- **PwC Turkey — Cyber Security Consultant** (February 2021 – August 2021): Penetration tests, red team activities, network infrastructure, application development, DDOS platform development. Used techs: Python, SQL, HTML/CSS/JS, Bash.
+- **Boğaziçi University Cyber Security Center — Penetration Tester** (September 2018 – August 2021): 20+ penetration tests, firewall configurations, phishing tests, trainings, consultancies.
+- **Boğaziçi University Computer Center — Assistant Web Developer** (July 2019 – February 2020): Made school's official map page. Built web pages mainly with Drupal for the institutions of the university. Used techs: PHP, HTML/CSS/JS, SQL.
+- **Turkcell / CyberCamp 2021** (Turkcell): CTF 2nd Place
+- **Boğaziçi University Cybersecurity Center / CyberCamp** (Boğaziçi University): Participant in 2017 and 2018 · Trainer in 2019, 2020 and 2021
+- **Mimori** (Agent Memory Tool): AI agent repository memory tool using AST mapping, PageRank, and decision logging. [https://github.com/fusuyfusuy/mimori]
+- **Akatsuki** (Agent Knowledge Base): AI agent knowledge base with custom MCP, BM25 search and word embeddings. [https://github.com/fusuyfusuy/akatsuki]
+- **Boğaziçi University Map App** (Web Application): Official map page. Accessible at https://map.boun.edu.tr/ [https://map.boun.edu.tr/]
+- **Creating a MITRE ATT&CK mapped open source HIDS** (Graduation Project): Sysmon and Wazuh based open source solution for detecting events and creating alerts.
+- **bountools.com** (Web Platform): Boğaziçi University course scheduling, archive, and search platform. [https://bountools.com/]
+- **GitHub Portfolio** (Open Source): I create for fun. Most of my projects are open source and available at my GitHub. [https://github.com/fusuyfusuy/]
+
+## [03] Personal (Independent Venues & Languages)
+- **daginikmasa.com** (https://daginikmasa.com/): Longform essays and blog posts on cyber security, software, and personal notes.
+- **fusuycorp.com** (https://fusuycorp.com/): Interactive browser physics simulations, terminal experiments, and AI agent essays.
+- **hepyeni.net** (https://hepyeni.net/): Collaborative book, film, and music recommendation and voting app for clubs.
+- **Türkçe**: Native
+- **English**: Advanced (TOEFL iBT Score 106)
