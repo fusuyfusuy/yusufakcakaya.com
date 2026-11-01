@@ -1,0 +1,11 @@
+---
+import MonographLayout from "../layouts/MonographLayout.astro";
+import MonographView from "../components/MonographView.astro";
+import { CV_DATA } from "../data/cv";
+
+const doc = CV_DATA.tr;
+---
+
+<MonographLayout doc={doc}>
+  <MonographView doc={doc} />
+</MonographLayout>

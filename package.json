@@ -1,0 +1,20 @@
+{
+  "name": "yusufakcakaya.com",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "astro:build": "astro build",
+    "verify": "node tests/verify-build.mjs",
+    "build": "astro build && node tests/verify-build.mjs",
+    "preview": "astro preview",
+    "deploy": "node scripts/deploy-gh-pages.mjs"
+  },
+  "dependencies": {
+    "astro": "^5.13.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.2"
+  }
+}

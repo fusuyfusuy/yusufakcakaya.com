@@ -1,0 +1,939 @@
+/* ==========================================================================
+   YUSUF AKÇAKAYA — OPTION A: STRUCTURAL LAYOUT + ATMOSPHERE MORPH
+   Three structurally distinct ecosystems:
+     [01] ACADEMIC — Two-column scholarly paper with left-margin timeline gutter
+     [02] HACKER   — Terminal window panes with chrome bars, scanline & 3D grid
+     [03] PERSONAL — Warm editorial zine showcase with curved gallery cards
+   ========================================================================== */
+
+:root {
+  --bg-r: 247;
+  --bg-g: 243;
+  --bg-b: 234;
+
+  --surface-r: 240;
+  --surface-g: 235;
+  --surface-b: 223;
+
+  --ink-r: 22;
+  --ink-g: 21;
+  --ink-b: 19;
+
+  --muted-r: 96;
+  --muted-g: 91;
+  --muted-b: 82;
+
+  --accent-r: 138;
+  --accent-g: 36;
+  --accent-b: 27;
+
+  --accent2-r: 30;
+  --accent2-g: 64;
+  --accent2-b: 112;
+
+  --border-alpha: 0.18;
+  --scroll-progress: 0;
+
+  --font-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, "Times New Roman", Georgia, serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+
+  --bg: rgb(var(--bg-r), var(--bg-g), var(--bg-b));
+  --surface: rgba(var(--surface-r), var(--surface-g), var(--surface-b), 0.82);
+  --ink: rgb(var(--ink-r), var(--ink-g), var(--ink-b));
+  --muted: rgb(var(--muted-r), var(--muted-g), var(--muted-b));
+  --accent: rgb(var(--accent-r), var(--accent-g), var(--accent-b));
+  --accent2: rgb(var(--accent2-r), var(--accent2-g), var(--accent2-b));
+  --border: rgba(var(--ink-r), var(--ink-g), var(--ink-b), var(--border-alpha));
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  background-color: var(--bg);
+  color: var(--ink);
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  overflow-x: hidden;
+  transition: background-color 60ms linear, color 60ms linear;
+}
+
+/* Fixed Full-Viewport Morphing Backdrop Canvas */
+#ecosystem-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.88;
+}
+
+/* Atmospheric Overlays per Ecosystem */
+.atmosphere-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 280ms ease;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 240, 255, 0.038) 0px,
+    rgba(0, 240, 255, 0.038) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+body[data-active-ecosystem="hacker"] .atmosphere-overlay {
+  opacity: 1;
+}
+
+/* Scroll Progress Rail */
+.scroll-rail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 100;
+  background: rgba(var(--ink-r), var(--ink-g), var(--ink-b), 0.08);
+}
+
+.scroll-rail-bar {
+  height: 100%;
+  width: calc(var(--scroll-progress, 0) * 100%);
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+}
+
+/* Sticky HUD Bar — Morphs font & framing per ecosystem */
+.hud-bar {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background: rgba(var(--bg-r), var(--bg-g), var(--bg-b), 0.84);
+  border-bottom: 1px solid var(--border);
+  transition: all 180ms ease;
+}
+
+.hud-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0.7rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hud-status {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.hud-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+}
+
+.hud-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.hud-link,
+.hud-action {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-decoration: none;
+  color: var(--muted);
+  padding: 0.32rem 0.65rem;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  transition: all 160ms ease;
+}
+
+.hud-link:hover,
+.hud-action:hover,
+.hud-link[data-active="true"] {
+  color: var(--ink);
+  border-color: var(--accent);
+  background: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.12);
+}
+
+.hud-divider {
+  width: 1px;
+  height: 14px;
+  background: var(--border);
+  margin: 0 0.2rem;
+}
+
+/* Main Stage */
+.monograph-stage {
+  position: relative;
+  z-index: 2;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 5rem;
+}
+
+/* ==========================================================================
+   IDENTITY HEADER
+   ========================================================================== */
+
+.identity-dossier {
+  padding: 2rem 0 3.2rem;
+  border-bottom: 2px solid var(--ink);
+  margin-bottom: 3.5rem;
+}
+
+.identity-grid {
+  display: grid;
+  grid-template-columns: 1.55fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.identity-name {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 5vw, 3.9rem);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.identity-credentials {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  color: var(--accent);
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.85rem;
+}
+
+.identity-summary {
+  font-size: 1.03rem;
+  line-height: 1.72;
+  color: var(--ink);
+  max-width: 65ch;
+}
+
+/* Latest Work Dropdown */
+.latest-work-dropdown {
+  margin-top: 1.35rem;
+  max-width: 65ch;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.latest-work-summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.6rem 0.95rem;
+  cursor: pointer;
+  user-select: none;
+  color: var(--ink);
+  transition: background-color 150ms ease;
+}
+
+.latest-work-summary::-webkit-details-marker {
+  display: none;
+}
+
+.latest-work-summary:hover {
+  background: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.08);
+}
+
+.latest-work-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.latest-work-label {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.latest-work-preview {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.latest-work-chevron {
+  color: var(--accent);
+  transition: transform 180ms ease;
+}
+
+.latest-work-dropdown[open] .latest-work-chevron {
+  transform: rotate(180deg);
+}
+
+.latest-work-list {
+  list-style: none;
+  border-top: 1px solid var(--border);
+  padding: 0.65rem 0.95rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.latest-work-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.latest-work-date {
+  color: var(--accent);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.latest-work-text {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+.contact-ledger {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1.2rem 1.35rem;
+  backdrop-filter: blur(8px);
+}
+
+.contact-ledger-title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.contact-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.contact-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+}
+
+.contact-label {
+  color: var(--muted);
+}
+
+.contact-link {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--accent);
+}
+
+.contact-link:hover {
+  color: var(--accent);
+  border-bottom-style: solid;
+}
+
+/* ==========================================================================
+   THRESHOLD PORTAL DIVIDERS BETWEEN ECOSYSTEMS
+   ========================================================================== */
+
+.threshold-portal {
+  position: relative;
+  margin: 5rem 0 3.5rem;
+  padding: 1.4rem 0;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.threshold-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+.threshold-tag {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 0.3rem 0.85rem;
+  border: 1px solid var(--accent);
+  background: rgba(var(--bg-r), var(--bg-g), var(--bg-b), 0.9);
+}
+
+/* ==========================================================================
+   ECOSYSTEM [01]: ACADEMIC — CLASSIC TWO-COLUMN SCHOLARLY MONOGRAPH
+   Left column: Dates, GPA, Institution metadata
+   Right column: Serif titles, thesis & scholarly prose, hairline dividers
+   ========================================================================== */
+
+.academic-ecosystem {
+  padding: 1rem 0 3rem;
+}
+
+.academic-header {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 2.5rem;
+  align-items: baseline;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid var(--ink);
+  margin-bottom: 2.5rem;
+}
+
+.academic-index-col {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.academic-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 4vw, 3.1rem);
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.academic-subtitle {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.08rem;
+  color: var(--muted);
+}
+
+.academic-section-row {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 2.5rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.academic-section-label {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.academic-ledger-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+}
+
+.academic-entry {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 1.5rem;
+  padding-bottom: 1.8rem;
+  border-bottom: 1px dashed var(--border);
+}
+
+.academic-entry:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.academic-meta {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.academic-meta-period {
+  color: var(--accent);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.academic-degree {
+  font-family: var(--font-serif);
+  font-size: 1.28rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.35rem;
+}
+
+.academic-thesis {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin-bottom: 0.55rem;
+  padding: 0.35rem 0.65rem;
+  border-left: 2px solid var(--accent);
+  background: rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.06);
+}
+
+.academic-prose {
+  font-family: var(--font-serif);
+  font-size: 1.02rem;
+  line-height: 1.68;
+  color: var(--ink);
+}
+
+.academic-Course-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.2rem;
+  font-size: 0.88rem;
+}
+
+.academic-Course-table th,
+.academic-Course-table td {
+  text-align: left;
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.academic-Course-table td:first-child {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.academic-interests-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.4rem;
+  list-style: none;
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+}
+
+.academic-interests-list li::before {
+  content: "§ ";
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   ECOSYSTEM [02]: HACKER — TERMINAL WINDOW PANES & BLUEPRINT MATRIX
+   Sharp 0px corners, terminal titlebars, monospace prompt hierarchy
+   ========================================================================== */
+
+.hacker-ecosystem {
+  padding: 1rem 0 3rem;
+  font-family: var(--font-mono);
+}
+
+.hacker-banner {
+  border: 1px solid var(--accent);
+  background: rgba(var(--surface-r), var(--surface-g), var(--surface-b), 0.9);
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.08);
+}
+
+.hacker-banner-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.74rem;
+  color: var(--accent);
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.9rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.hacker-title {
+  font-family: var(--font-mono);
+  font-size: clamp(2rem, 4vw, 2.85rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.35rem;
+}
+
+.hacker-subtitle {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.hacker-subhead {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin: 2.5rem 0 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.hacker-subhead::before {
+  content: ">";
+  font-weight: 700;
+}
+
+.terminal-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.15rem;
+}
+
+.terminal-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.15rem;
+}
+
+.terminal-pane {
+  border: 1px solid var(--border);
+  background: rgba(var(--surface-r), var(--surface-g), var(--surface-b), 0.88);
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.terminal-pane:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 22px rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.14);
+  transform: translateY(-2px);
+}
+
+.terminal-chrome {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.42rem 0.9rem;
+  background: rgba(var(--ink-r), var(--ink-g), var(--ink-b), 0.06);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.terminal-dots {
+  display: inline-flex;
+  gap: 5px;
+}
+
+.terminal-dots span {
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--accent);
+  display: inline-block;
+}
+
+.terminal-body {
+  padding: 1.15rem 1.25rem;
+}
+
+.terminal-role-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.25rem;
+}
+
+.terminal-company {
+  font-size: 0.82rem;
+  color: var(--accent);
+  margin-bottom: 0.65rem;
+}
+
+.terminal-desc {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  line-height: 1.58;
+  color: var(--ink);
+  margin-bottom: 0.85rem;
+}
+
+.terminal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.38rem;
+}
+
+.terminal-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid var(--border);
+  color: var(--accent);
+  background: rgba(var(--bg-r), var(--bg-g), var(--bg-b), 0.65);
+}
+
+.terminal-links {
+  margin-top: 0.85rem;
+  padding-top: 0.65rem;
+  border-top: 1px dashed var(--border);
+  display: flex;
+  gap: 1rem;
+  font-size: 0.76rem;
+}
+
+.terminal-link {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.terminal-link:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   ECOSYSTEM [03]: PERSONAL — WARM EDITORIAL ZINE & CURVED GALLERY
+   Generous whitespace, soft 18px curves, warm golden/terracotta glow
+   ========================================================================== */
+
+.personal-ecosystem {
+  padding: 1rem 0 3rem;
+}
+
+.personal-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 3rem;
+}
+
+.personal-index {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.personal-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 4.5vw, 3.4rem);
+  font-weight: 400;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.personal-subtitle {
+  font-size: 1.05rem;
+  color: var(--muted);
+}
+
+.zine-showcase {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.6rem;
+  margin-bottom: 3rem;
+}
+
+.zine-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem 1.85rem;
+  border-radius: 16px;
+  background: rgba(var(--surface-r), var(--surface-g), var(--surface-b), 0.88);
+  border: 1px solid rgba(var(--accent-r), var(--accent-g), var(--accent-b), 0.26);
+  border-top: 3px solid var(--accent);
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1), border-color 240ms ease, box-shadow 240ms ease;
+}
+
+.zine-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent2);
+  box-shadow: 0 16px 36px -14px rgba(18, 36, 27, 0.18);
+}
+
+.zine-badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent2);
+  font-weight: 600;
+  margin-bottom: 0.9rem;
+  display: inline-block;
+}
+
+.zine-name {
+  font-family: var(--font-serif);
+  font-size: 1.65rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.zine-tagline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.98rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.zine-desc {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+
+.zine-cta {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent);
+}
+
+.personal-languages-box {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.6rem 2rem;
+  border-radius: 18px;
+  background: rgba(var(--surface-r), var(--surface-g), var(--surface-b), 0.65);
+  border: 1px solid var(--border);
+}
+
+.personal-languages-title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.personal-languages-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+.personal-lang-item {
+  text-align: center;
+  padding: 0.75rem;
+}
+
+.personal-lang-name {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.personal-lang-level {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.personal-lang-cert {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent);
+  margin-top: 0.2rem;
+}
+
+/* Colophon Footer */
+.monograph-colophon {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+
+@media (max-width: 880px) {
+  .identity-grid,
+  .academic-header,
+  .academic-section-row,
+  .academic-entry,
+  .terminal-grid-2,
+  .terminal-grid-3,
+  .zine-showcase,
+  .personal-languages-grid {
+    grid-template-columns: 1fr;
+    gap: 1.15rem;
+  }
+
+  .hud-inner {
+    padding: 0.6rem 1rem;
+  }
+
+  .monograph-stage {
+    padding: 1.5rem 1rem 3.5rem;
+  }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY: PREFERS-REDUCED-MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .terminal-pane,
+  .zine-card {
+    transition: none !important;
+  }
+}

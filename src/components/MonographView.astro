@@ -1,0 +1,824 @@
+---
+import type { MonographDocument } from "../data/cv";
+
+interface Props {
+  doc: MonographDocument;
+}
+
+const { doc } = Astro.props;
+---
+
+<!-- Unified Morphing Ecosystem Backdrop Canvas -->
+<canvas id="ecosystem-canvas" aria-hidden="true"></canvas>
+<div class="atmosphere-overlay" aria-hidden="true"></div>
+
+<!-- Top Scroll Progress Rail -->
+<div class="scroll-rail" aria-hidden="true">
+  <div class="scroll-rail-bar"></div>
+</div>
+
+<!-- Morphing Sticky HUD Bar -->
+<header
+  class="hud-bar"
+  data-status-academic={doc.hud.academicStatus}
+  data-status-hacker={doc.hud.hackerStatus}
+  data-status-personal={doc.hud.personalStatus}
+>
+  <div class="hud-inner">
+    <div class="hud-status">
+      <span class="hud-pulse" aria-hidden="true"></span>
+      <span id="hud-status-text">{doc.hud.academicStatus}</span>
+    </div>
+
+    <nav class="hud-nav" aria-label="Ecosystem Navigation">
+      <a href="#academic" class="hud-link" data-nav="academic" data-active="true">
+        {doc.hud.navAcademic}
+      </a>
+      <a href="#hacker" class="hud-link" data-nav="hacker">
+        {doc.hud.navHacker}
+      </a>
+      <a href="#personal" class="hud-link" data-nav="personal">
+        {doc.hud.navPersonal}
+      </a>
+      <span class="hud-divider" aria-hidden="true"></span>
+      <a href="/cv.json" class="hud-link">
+        {doc.meta.machineJsonLabel}
+      </a>
+      <a
+        href={doc.meta.alternatePath}
+        class="hud-link"
+        hreflang={doc.locale === "tr" ? "en" : "tr"}
+      >
+        {doc.meta.alternateLabel}
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main class="monograph-stage" id="top">
+  <!-- ====================================================================
+       IDENTITY HEADER
+       ==================================================================== -->
+  <section class="identity-dossier" aria-labelledby="identity-heading">
+    <div class="identity-grid">
+      <div>
+        <h1 class="identity-name warp-heading" id="identity-heading">
+          {doc.identity.name}
+        </h1>
+        <div class="identity-credentials">
+          <span>{doc.identity.institution}</span>
+          <span>·</span>
+          <span>{doc.identity.role}</span>
+          <span>·</span>
+          <span>{doc.identity.degreeTrack}</span>
+        </div>
+        <p class="identity-summary">{doc.identity.summary}</p>
+
+        <details class="latest-work-dropdown">
+          <summary class="latest-work-summary">
+            <span class="latest-work-dot" aria-hidden="true"></span>
+            <span class="latest-work-label">{doc.latestWork.label}</span>
+            <span class="latest-work-preview">
+              {doc.latestWork.entries[0]?.date}
+            </span>
+            <span class="latest-work-chevron" aria-hidden="true">▾</span>
+          </summary>
+          <ul class="latest-work-list">
+            {
+              doc.latestWork.entries.map((item) => (
+                <li class="latest-work-item">
+                  <time class="latest-work-date" datetime={item.date}>
+                    {item.date}
+                  </time>
+                  <span class="latest-work-text">{item.text}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </details>
+      </div>
+
+      <aside class="contact-ledger" aria-label="Contact Channels">
+        <div class="contact-ledger-title">
+          {doc.identity.handle} · {doc.identity.location}
+        </div>
+        <ul class="contact-list">
+          {
+            doc.identity.contacts.map((contact) => (
+              <li class="contact-item">
+                <span class="contact-label">{contact.label}</span>
+                <a
+                  href={contact.href}
+                  class="contact-link"
+                  target={contact.external ? "_blank" : undefined}
+                  rel={contact.external ? "noopener noreferrer" : undefined}
+                >
+                  {contact.handle}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       ECOSYSTEM [01]: ACADEMIC (TWO-COLUMN SCHOLARLY MONOGRAPH)
+       ==================================================================== -->
+  <section
+    id="academic"
+    class="academic-ecosystem"
+    data-ecosystem="academic"
+    aria-labelledby="academic-heading"
+  >
+    <div class="academic-header">
+      <div class="academic-index-col">§ {doc.academic.index}</div>
+      <div>
+        <h2 class="academic-title warp-heading" id="academic-heading">
+          {doc.academic.title}
+        </h2>
+        <p class="academic-subtitle">{doc.academic.subtitle}</p>
+      </div>
+    </div>
+
+    <!-- Education Row -->
+    <div class="academic-section-row">
+      <h3 class="academic-section-label">{doc.academic.educationHeading}</h3>
+      <div class="academic-ledger-list">
+        {
+          doc.academic.education.map((edu) => (
+            <article class="academic-entry">
+              <div class="academic-meta">
+                <span class="academic-meta-period">{edu.period}</span>
+                <div>{edu.institution}</div>
+                {edu.gpa && <div>GPA: {edu.gpa}</div>}
+              </div>
+              <div>
+                <h4 class="academic-degree">{edu.degree}</h4>
+                {edu.thesis && (
+                  <div class="academic-thesis">
+                    Thesis: "{edu.thesis}"
+                  </div>
+                )}
+                <p class="academic-prose">{edu.summary}</p>
+                {edu.highlights.length > 0 && (
+                  <p class="academic-prose" style="margin-top: 0.45rem;">
+                    {edu.highlights[edu.highlights.length - 1]}
+                  </p>
+                )}
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Research & Teaching Row -->
+    <div class="academic-section-row">
+      <h3 class="academic-section-label">{doc.academic.researchHeading}</h3>
+      <div>
+        <article class="academic-entry">
+          <div class="academic-meta">
+            <span class="academic-meta-period">{doc.academic.appointment.period}</span>
+            <div>{doc.academic.appointment.institution}</div>
+            <div>{doc.academic.appointment.department}</div>
+          </div>
+          <div>
+            <h4 class="academic-degree">{doc.academic.appointment.role}</h4>
+            <p class="academic-prose">{doc.academic.appointment.summary}</p>
+
+            <table class="academic-Course-table">
+              <tbody>
+                {
+                  doc.academic.appointment.coursesAssisted.map((c) => (
+                    <tr>
+                      <td>{c.code}</td>
+                      <td>{c.title}</td>
+                      <td>{c.role}</td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Areas of Interest Row -->
+    <div class="academic-section-row">
+      <h3 class="academic-section-label">{doc.academic.interestsHeading}</h3>
+      <ul class="academic-interests-list">
+        {doc.academic.interests.map((interest) => <li>{interest}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Threshold Transition into Hacker Ecosystem -->
+  <div class="threshold-portal" aria-hidden="true">
+    <div class="threshold-line"></div>
+    <span class="threshold-tag">01 → 02 // TERMINAL MODE</span>
+    <div class="threshold-line"></div>
+  </div>
+
+  <!-- ====================================================================
+       ECOSYSTEM [02]: HACKER (TERMINAL WINDOW PANES & BLUEPRINT MATRIX)
+       ==================================================================== -->
+  <section
+    id="hacker"
+    class="hacker-ecosystem"
+    data-ecosystem="hacker"
+    aria-labelledby="hacker-heading"
+  >
+    <div class="hacker-banner">
+      <div class="hacker-banner-top">
+        <span>[SECTION_02 // ENGINEERING_AND_SECURITY]</span>
+        <span>TTY: /dev/pts/0</span>
+      </div>
+      <h2 class="hacker-title warp-heading" id="hacker-heading">
+        {doc.hacker.title}
+      </h2>
+      <p class="hacker-subtitle">{doc.hacker.subtitle}</p>
+    </div>
+
+    <!-- Experience Panes -->
+    <h3 class="hacker-subhead">{doc.hacker.experienceHeading}</h3>
+    <div class="terminal-grid-2">
+      {
+        doc.hacker.experience.map((exp) => (
+          <article class="terminal-pane">
+            <div class="terminal-chrome">
+              <span>exp://{exp.slug}</span>
+              <span>
+                {exp.period}
+                {exp.mode ? ` · ${exp.mode}` : ""}
+              </span>
+            </div>
+            <div class="terminal-body">
+              <h4 class="terminal-role-title">{exp.role}</h4>
+              <div class="terminal-company">{exp.company}</div>
+              <p class="terminal-desc">{exp.summary}</p>
+              <div class="terminal-tags">
+                {exp.tags.map((tag) => (
+                  <span class="terminal-tag">{tag}</span>
+                ))}
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- Courses / Camps Panes -->
+    <h3 class="hacker-subhead">{doc.hacker.campsHeading}</h3>
+    <div class="terminal-grid-2">
+      {
+        doc.hacker.camps.map((camp) => (
+          <article class="terminal-pane">
+            <div class="terminal-chrome">
+              <span>camp://{camp.slug}</span>
+              <span>{camp.period}</span>
+            </div>
+            <div class="terminal-body">
+              <h4 class="terminal-role-title">{camp.title}</h4>
+              <div class="terminal-company">{camp.organization}</div>
+              <p class="terminal-desc" style="margin-bottom: 0;">
+                {camp.distinction}
+              </p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- Projects Panes -->
+    <h3 class="hacker-subhead">{doc.hacker.projectsHeading}</h3>
+    <div class="terminal-grid-2">
+      {
+        doc.hacker.projects.map((proj) => (
+          <article class="terminal-pane">
+            <div class="terminal-chrome">
+              <span>proj://{proj.id}</span>
+              <span>{proj.period}</span>
+            </div>
+            <div class="terminal-body">
+              <h4 class="terminal-role-title">{proj.name}</h4>
+              <div class="terminal-company">{proj.category}</div>
+              <p class="terminal-desc">{proj.summary}</p>
+              <div class="terminal-tags">
+                {proj.stack.map((tech) => (
+                  <span class="terminal-tag">{tech}</span>
+                ))}
+              </div>
+              {(proj.href || proj.repoHref) && (
+                <div class="terminal-links">
+                  {proj.href && (
+                    <a
+                      href={proj.href}
+                      class="terminal-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      [{proj.href.replace(/^https?:\/\//, "").replace(/\/$/, "")} ↗]
+                    </a>
+                  )}
+                  {proj.repoHref && (
+                    <a
+                      href={proj.repoHref}
+                      class="terminal-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      [github ↗]
+                    </a>
+                  )}
+                </div>
+              )}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- Skills Panes -->
+    <h3 class="hacker-subhead">{doc.hacker.skillsHeading}</h3>
+    <div class="terminal-grid-3">
+      {
+        doc.hacker.skills.map((group, idx) => (
+          <article class="terminal-pane">
+            <div class="terminal-chrome">
+              <span>env://stack_0{idx + 1}</span>
+              <span class="terminal-dots">
+                <span />
+                <span />
+              </span>
+            </div>
+            <div class="terminal-body">
+              <h4 class="terminal-role-title" style="margin-bottom: 0.75rem;">
+                {group.category}
+              </h4>
+              <div class="terminal-tags">
+                {group.items.map((item) => (
+                  <span class="terminal-tag">{item}</span>
+                ))}
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Threshold Transition into Personal Ecosystem -->
+  <div class="threshold-portal" aria-hidden="true">
+    <div class="threshold-line"></div>
+    <span class="threshold-tag">02 → 03 // PERSONAL REALM</span>
+    <div class="threshold-line"></div>
+  </div>
+
+  <!-- ====================================================================
+       ECOSYSTEM [03]: PERSONAL (WARM EDITORIAL ZINE GALLERY)
+       ==================================================================== -->
+  <section
+    id="personal"
+    class="personal-ecosystem"
+    data-ecosystem="personal"
+    aria-labelledby="personal-heading"
+  >
+    <div class="personal-header">
+      <span class="personal-index">No. {doc.personal.index}</span>
+      <h2 class="personal-title warp-heading" id="personal-heading">
+        {doc.personal.title}
+      </h2>
+      <p class="personal-subtitle">{doc.personal.subtitle}</p>
+    </div>
+
+    <!-- Zine Showcase Cards -->
+    <div class="zine-showcase">
+      {
+        doc.personal.venues.map((venue) => (
+          <a
+            href={venue.href}
+            class="zine-card"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div>
+              <span class="zine-badge">{venue.badge}</span>
+              <h3 class="zine-name">{venue.name}</h3>
+              <div class="zine-tagline">{venue.tagline}</div>
+              <p class="zine-desc">{venue.description}</p>
+            </div>
+            <div class="zine-cta">{venue.href.replace(/^https?:\/\//, "")} ↗</div>
+          </a>
+        ))
+      }
+    </div>
+
+    <!-- Languages Box -->
+    <div class="personal-languages-box">
+      <h3 class="personal-languages-title">{doc.personal.languagesHeading}</h3>
+      <div class="personal-languages-grid">
+        {
+          doc.personal.languages.map((lang) => (
+            <div class="personal-lang-item">
+              <div class="personal-lang-name">{lang.language}</div>
+              <div class="personal-lang-level">{lang.proficiency}</div>
+              {lang.certification && (
+                <div class="personal-lang-cert">{lang.certification}</div>
+              )}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       COLOPHON
+       ==================================================================== -->
+  <footer class="monograph-colophon">
+    <div>{doc.colophon.note}</div>
+  </footer>
+</main>
+
+<!-- ======================================================================
+     OPTION A: PRONOUNCED 3-ECOSYSTEM ATMOSPHERE & 3D PERSPECTIVE CANVAS
+     Scene 1 (Academic): Parchment + Isometric/Delaunay Citation Lattice
+     Scene 2 (Hacker):   Obsidian + 3D Perspective Horizon Grid + Matrix Streams
+     Scene 3 (Personal): Warm Espresso + Floating Golden Bokeh / Embers
+     ====================================================================== -->
+<script>
+  (() => {
+    const root = document.documentElement;
+    const body = document.body;
+    const hudHeader = document.querySelector<HTMLElement>(".hud-bar");
+    const hudStatusText = document.getElementById("hud-status-text");
+    const navLinks = Array.from(document.querySelectorAll<HTMLElement>("[data-nav]"));
+
+    const secHacker = document.getElementById("hacker");
+    const secPersonal = document.getElementById("personal");
+
+    const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    interface Palette {
+      bg: [number, number, number];
+      surface: [number, number, number];
+      ink: [number, number, number];
+      muted: [number, number, number];
+      accent: [number, number, number];
+      accent2: [number, number, number];
+      borderAlpha: number;
+    }
+
+    const PALETTES: Record<"academic" | "hacker" | "personal", Palette> = {
+      academic: {
+        bg: [247, 243, 234],
+        surface: [240, 235, 223],
+        ink: [22, 21, 19],
+        muted: [96, 91, 82],
+        accent: [138, 36, 27],
+        accent2: [30, 64, 112],
+        borderAlpha: 0.18,
+      },
+      hacker: {
+        bg: [7, 10, 15],
+        surface: [13, 19, 28],
+        ink: [220, 248, 255],
+        muted: [110, 150, 168],
+        accent: [0, 240, 255],
+        accent2: [16, 185, 129],
+        borderAlpha: 0.28,
+      },
+      personal: {
+        bg: [17, 36, 26],
+        surface: [26, 52, 38],
+        ink: [240, 236, 225],
+        muted: [164, 186, 170],
+        accent: [122, 184, 138],
+        accent2: [212, 168, 76],
+        borderAlpha: 0.26,
+      },
+    };
+
+    const lerp = (a: number, b: number, t: number): number => a + (b - a) * t;
+    const clamp = (v: number, min: number, max: number): number =>
+      Math.max(min, Math.min(max, v));
+
+    const lerpVec3 = (
+      a: [number, number, number],
+      b: [number, number, number],
+      t: number
+    ): [number, number, number] => [
+      Math.round(lerp(a[0], b[0], t)),
+      Math.round(lerp(a[1], b[1], t)),
+      Math.round(lerp(a[2], b[2], t)),
+    ];
+
+    let ecosystemPhase = 0;
+    let lastScrollY = window.scrollY;
+    let velocity = 0;
+    let gridOffset = 0;
+
+    const computeEcosystemPhase = (): number => {
+      if (!secHacker || !secPersonal) return 0;
+      const viewportTrigger = window.scrollY + window.innerHeight * 0.48;
+      const hackerTop = secHacker.offsetTop;
+      const personalTop = secPersonal.offsetTop;
+      const transitionWindow = Math.max(window.innerHeight * 0.42, 240);
+
+      if (viewportTrigger <= hackerTop - transitionWindow * 0.5) return 0;
+      if (viewportTrigger < hackerTop + transitionWindow * 0.5) {
+        return clamp(
+          (viewportTrigger - (hackerTop - transitionWindow * 0.5)) /
+            transitionWindow,
+          0,
+          1
+        );
+      }
+      if (viewportTrigger <= personalTop - transitionWindow * 0.5) return 1;
+      if (viewportTrigger < personalTop + transitionWindow * 0.5) {
+        return (
+          1 +
+          clamp(
+            (viewportTrigger - (personalTop - transitionWindow * 0.5)) /
+              transitionWindow,
+            0,
+            1
+          )
+        );
+      }
+      return 2;
+    };
+
+    const applyInterpolatedTheme = (phase: number) => {
+      const fromPalette = phase <= 1 ? PALETTES.academic : PALETTES.hacker;
+      const toPalette = phase <= 1 ? PALETTES.hacker : PALETTES.personal;
+      const localT = phase <= 1 ? clamp(phase, 0, 1) : clamp(phase - 1, 0, 1);
+
+      const bg = lerpVec3(fromPalette.bg, toPalette.bg, localT);
+      const surface = lerpVec3(fromPalette.surface, toPalette.surface, localT);
+      const ink = lerpVec3(fromPalette.ink, toPalette.ink, localT);
+      const muted = lerpVec3(fromPalette.muted, toPalette.muted, localT);
+      const accent = lerpVec3(fromPalette.accent, toPalette.accent, localT);
+      const accent2 = lerpVec3(fromPalette.accent2, toPalette.accent2, localT);
+      const borderAlpha = lerp(fromPalette.borderAlpha, toPalette.borderAlpha, localT);
+
+      root.style.setProperty("--bg-r", String(bg[0]));
+      root.style.setProperty("--bg-g", String(bg[1]));
+      root.style.setProperty("--bg-b", String(bg[2]));
+
+      root.style.setProperty("--surface-r", String(surface[0]));
+      root.style.setProperty("--surface-g", String(surface[1]));
+      root.style.setProperty("--surface-b", String(surface[2]));
+
+      root.style.setProperty("--ink-r", String(ink[0]));
+      root.style.setProperty("--ink-g", String(ink[1]));
+      root.style.setProperty("--ink-b", String(ink[2]));
+
+      root.style.setProperty("--muted-r", String(muted[0]));
+      root.style.setProperty("--muted-g", String(muted[1]));
+      root.style.setProperty("--muted-b", String(muted[2]));
+
+      root.style.setProperty("--accent-r", String(accent[0]));
+      root.style.setProperty("--accent-g", String(accent[1]));
+      root.style.setProperty("--accent-b", String(accent[2]));
+
+      root.style.setProperty("--accent2-r", String(accent2[0]));
+      root.style.setProperty("--accent2-g", String(accent2[1]));
+      root.style.setProperty("--accent2-b", String(accent2[2]));
+
+      root.style.setProperty("--border-alpha", borderAlpha.toFixed(3));
+
+      const activeKey: "academic" | "hacker" | "personal" =
+        phase < 0.5 ? "academic" : phase < 1.5 ? "hacker" : "personal";
+
+      if (body.getAttribute("data-active-ecosystem") !== activeKey) {
+        body.setAttribute("data-active-ecosystem", activeKey);
+        if (hudHeader && hudStatusText) {
+          const statusAttr = hudHeader.getAttribute(`data-status-${activeKey}`);
+          if (statusAttr) hudStatusText.textContent = statusAttr;
+        }
+        for (const link of navLinks) {
+          link.setAttribute(
+            "data-active",
+            link.getAttribute("data-nav") === activeKey ? "true" : "false"
+          );
+        }
+      }
+    };
+
+    const canvas = document.getElementById(
+      "ecosystem-canvas"
+    ) as HTMLCanvasElement | null;
+    const ctx = canvas ? canvas.getContext("2d") : null;
+    const NODE_COUNT = 60;
+    // Stride 5: [x, y, vx, vy, size]
+    const nodes = new Float32Array(NODE_COUNT * 5);
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+
+    const initNodes = () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      if (canvas) {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+      for (let i = 0; i < NODE_COUNT; i++) {
+        const idx = i * 5;
+        nodes[idx] = Math.random() * width;
+        nodes[idx + 1] = Math.random() * height;
+        nodes[idx + 2] = (Math.random() - 0.5) * 0.5;
+        nodes[idx + 3] = (Math.random() - 0.5) * 0.5;
+        nodes[idx + 4] = 1.5 + Math.random() * 3.5;
+      }
+    };
+
+    initNodes();
+    window.addEventListener("resize", initNodes, { passive: true });
+
+    const renderFrame = () => {
+      const currentY = window.scrollY;
+      const maxScroll = Math.max(
+        document.documentElement.scrollHeight - window.innerHeight,
+        1
+      );
+      const progress = clamp(currentY / maxScroll, 0, 1);
+      root.style.setProperty("--scroll-progress", progress.toFixed(4));
+
+      const rawDelta = currentY - lastScrollY;
+      lastScrollY = currentY;
+      velocity = velocity * 0.8 + rawDelta * 0.2;
+
+      const targetPhase = computeEcosystemPhase();
+      ecosystemPhase = lerp(ecosystemPhase, targetPhase, 0.18);
+      applyInterpolatedTheme(ecosystemPhase);
+
+      if (ctx && canvas) {
+        ctx.clearRect(0, 0, width, height);
+
+        const academicWeight = clamp(1 - ecosystemPhase, 0, 1);
+        const hackerWeight = clamp(1 - Math.abs(ecosystemPhase - 1), 0, 1);
+        const personalWeight = clamp(ecosystemPhase - 1, 0, 1);
+
+        // SCENE 1: ACADEMIC PAPER RULE LINES & DELAUNAY CITATION GRAPH
+        if (academicWeight > 0.05) {
+          ctx.strokeStyle = `rgba(138, 36, 27, ${(0.055 * academicWeight).toFixed(3)})`;
+          ctx.lineWidth = 1;
+          const step = 64;
+          for (let x = 0; x < width; x += step) {
+            ctx.beginPath();
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, height);
+            ctx.stroke();
+          }
+        }
+
+        // SCENE 2: HACKER 3D PERSPECTIVE CYBER HORIZON GRID
+        if (hackerWeight > 0.05) {
+          const horizonY = height * 0.58;
+          ctx.strokeStyle = `rgba(0, 240, 255, ${(0.14 * hackerWeight).toFixed(3)})`;
+          ctx.lineWidth = 1;
+
+          // Radial perspective rays from horizon
+          const numRays = 16;
+          for (let r = -numRays; r <= numRays; r++) {
+            const topX = width * 0.5 + r * 28;
+            const bottomX = width * 0.5 + r * 145;
+            ctx.beginPath();
+            ctx.moveTo(topX, horizonY);
+            ctx.lineTo(bottomX, height);
+            ctx.stroke();
+          }
+
+          // Scrolling horizontal depth lines
+          if (!reducedMotionQuery.matches) {
+            gridOffset = (gridOffset + 0.55 + Math.abs(velocity) * 0.05) % 40;
+          }
+          for (let d = 1; d <= 10; d++) {
+            const yNorm = Math.pow((d * 40 + gridOffset) / 440, 1.65);
+            const yPos = horizonY + yNorm * (height - horizonY);
+            if (yPos < height) {
+              ctx.beginPath();
+              ctx.moveTo(0, yPos);
+              ctx.lineTo(width, yPos);
+              ctx.stroke();
+            }
+          }
+        }
+
+        // SCENE 3: PERSONAL DEEP VERDE ANTICO MARBLE & BYZANTINE GOLD
+        if (personalWeight > 0.05) {
+          const sunGrad = ctx.createRadialGradient(
+            width * 0.5,
+            height * 0.2,
+            10,
+            width * 0.5,
+            height * 0.45,
+            Math.max(width, height) * 0.72
+          );
+          sunGrad.addColorStop(
+            0,
+            `rgba(54, 112, 78, ${(0.22 * personalWeight).toFixed(3)})`
+          );
+          sunGrad.addColorStop(
+            0.5,
+            `rgba(212, 168, 76, ${(0.08 * personalWeight).toFixed(3)})`
+          );
+          sunGrad.addColorStop(1, "rgba(17, 36, 26, 0)");
+          ctx.fillStyle = sunGrad;
+          ctx.fillRect(0, 0, width, height);
+        }
+
+        const breezeTime = performance.now() * 0.0012;
+
+        // UNIFIED PARTICLE BUFFER MORPHING ACROSS ALL 3 WORLDS
+        for (let i = 0; i < NODE_COUNT; i++) {
+          const idx = i * 5;
+          let x = nodes[idx];
+          let y = nodes[idx + 1];
+          const vx = nodes[idx + 2];
+          const vy = nodes[idx + 3];
+          const rSize = nodes[idx + 4];
+
+          if (!reducedMotionQuery.matches) {
+            const breezeSway = Math.sin(breezeTime + i * 0.7) * 0.3 * personalWeight;
+            x += vx * (1 - hackerWeight * 0.7) + breezeSway;
+            const verticalStep =
+              vy * academicWeight +
+              (2.2 + rSize * 0.6) * hackerWeight +
+              (0.22 + rSize * 0.06) * personalWeight;
+            y += verticalStep;
+          }
+
+          if (x < 0) x += width;
+          if (x > width) x -= width;
+          if (y < 0) y += height;
+          if (y > height) y -= height;
+
+          nodes[idx] = x;
+          nodes[idx + 1] = y;
+
+          if (hackerWeight > 0.35) {
+            ctx.fillStyle = `rgba(0, 240, 255, ${(0.35 * hackerWeight).toFixed(2)})`;
+            ctx.fillRect(x - 1, y - 6, 2, 14);
+          } else if (personalWeight > 0.35) {
+            // Verde Antico serpentine & Byzantine gold-leaf motes
+            const angle = Math.sin(breezeTime * 0.8 + i * 1.3) * 0.5 + 0.35;
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(angle);
+            ctx.beginPath();
+            ctx.ellipse(0, 0, rSize * 1.7, rSize * 0.75, 0, 0, Math.PI * 2);
+            ctx.fillStyle =
+              i % 3 === 0
+                ? `rgba(212, 168, 76, ${(0.34 * personalWeight).toFixed(2)})`
+                : `rgba(122, 184, 138, ${(0.26 * personalWeight).toFixed(2)})`;
+            ctx.fill();
+            ctx.restore();
+          } else {
+            ctx.beginPath();
+            ctx.arc(x, y, 2, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(138, 36, 27, ${(0.28 * academicWeight).toFixed(2)})`;
+            ctx.fill();
+          }
+        }
+
+        // Academic Delaunay Citation Edges
+        if (academicWeight > 0.2) {
+          const maxDist = 140;
+          const maxDistSq = maxDist * maxDist;
+          for (let i = 0; i < NODE_COUNT; i++) {
+            const ix = nodes[i * 5];
+            const iy = nodes[i * 5 + 1];
+            for (let j = i + 1; j < NODE_COUNT; j++) {
+              const jx = nodes[j * 5];
+              const jy = nodes[j * 5 + 1];
+              const dx = ix - jx;
+              const dy = iy - jy;
+              const dSq = dx * dx + dy * dy;
+              if (dSq < maxDistSq) {
+                const alpha =
+                  (1 - Math.sqrt(dSq) / maxDist) * 0.13 * academicWeight;
+                ctx.strokeStyle = `rgba(22, 21, 19, ${alpha.toFixed(3)})`;
+                ctx.lineWidth = 0.75;
+                ctx.beginPath();
+                ctx.moveTo(ix, iy);
+                ctx.lineTo(jx, jy);
+                ctx.stroke();
+              }
+            }
+          }
+        }
+      }
+
+      requestAnimationFrame(renderFrame);
+    };
+
+    requestAnimationFrame(renderFrame);
+  })();
+</script>
